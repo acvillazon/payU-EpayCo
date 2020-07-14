@@ -1,0 +1,92 @@
+<div id="container_flex">
+  <div
+    style="display: flex; flex-direction: column; width: 100%;"
+    *ngIf="inventory && !inventory.length"
+    class="alert alert-danger"
+    role="alert"
+  >
+    <p style="font-size: 20px; margin: 0px;">
+      Products out of stock
+    </p>
+  </div>
+
+  <ng-container *ngIf="filter && filter.length > 0; else elseTemplate">
+    <div *ngFor="let item of filter" class="card card_style">
+      <img class="card-img-top" [src]="item.image" alt="Card image cap" />
+      <div class="card-body">
+        <h4 class="card-title">{{ item.name }}</h4>
+        <span class="card-title text-danger">{{ item.price | currency }}</span>
+        <p class="card-text"></p>
+        <a
+          title="OnPage-CheckOut"
+          (click)="executeEpay(item, false)"
+          style="color: white !important;"
+          class="btn btn-danger"
+        >
+          EpayCo
+          <i class="far fa-credit-card"></i>
+        </a>
+        <a title="API" style="color: white !important;" class="btn btn-success">
+          PayU
+          <i class="far fa-credit-card"></i>
+        </a>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div *ngFor="let item of inventory" class="card card_style">
+      <img class="card-img-top" [src]="item.image" alt="Card image cap" />
+      <div class="card-body">
+        <h4 class="card-title">{{ item.name }}</h4>
+        <span class="card-title text-danger">{{ item.price | currency }}</span>
+        <p class="card-text"></p>
+        <a
+          (click)="executeEpay(item, false)"
+          title="OnPage-CheckOut"
+          style="color: white !important;"
+          class="btn btn-danger"
+        >
+          EpayCo
+
+          <i class="far fa-credit-card"></i>
+        </a>
+        <form
+          ngNoForm
+          method="post"
+          action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/"
+          accept-charset="UTF-8"
+        >
+          <input
+            type="image"
+            border="0"
+            alt=""
+            src="http://www.payulatam.com/img-secure-2015/boton_pagar_mediano.png"
+            onClick="this.form.urlOrigen.value = window.location.href;"
+          />
+          <input
+            name="buttonId"
+            type="hidden"
+            value="7iF1NFqB+Qa/EUsoDUQ3++xI8vNEk7B5iu6Gb7sP+jL1G5TtBCMBkw=="
+          />
+          <input name="merchantId" type="hidden" value="508029" />
+          <input name="accountId" type="hidden" value="512321" />
+          <input name="description" type="hidden" [value]="item.name" />
+          <input
+            name="referenceCode"
+            type="hidden"
+            [value]="item.price + 2020"
+          />
+          <input name="amount" type="hidden" [value]="item.price" />
+          <input name="tax" type="hidden" value="0.00" />
+          <input name="taxReturnBase" type="hidden" value="0.00" />
+          <input name="shipmentValue" value="0.00" type="hidden" />
+          <input name="currency" type="hidden" value="COP" />
+          <input name="lng" type="hidden" value="es" />
+          <input name="sourceUrl" id="urlOrigen" value="" type="hidden" />
+          <input name="buttonType" value="SIMPLE" type="hidden" />
+          <input name="signature" [value]="item | signature" type="hidden" />
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>

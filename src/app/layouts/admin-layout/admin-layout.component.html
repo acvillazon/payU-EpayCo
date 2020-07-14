@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div
+    class="sidebar"
+    style="overflow-x: hidden;"
+    data-color="black"
+    data-active-color="danger"
+  >
+    <sidebar-cmp></sidebar-cmp>
+  </div>
+  <div class="main-panel" style="background-color: whitesmoke;">
+    <navbar-cmp></navbar-cmp>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <footer-cmp></footer-cmp>
+  </div>
+</div>
+<fixedplugin-cmp></fixedplugin-cmp>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+  integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+  crossorigin="anonymous"
+/>
+<!-- <style>
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style> -->
