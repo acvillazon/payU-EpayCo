@@ -15,11 +15,9 @@ We are going to use the second method, this method provide us a class with all t
 
 we must include in our proyect the script provided for **epayCo**
 
-`
-
+```
 <script type="text/javascript" src="https://checkout.epayco.co/checkout.js"> </script>
-
-`
+```
 
 ### SECOND STEP
 
