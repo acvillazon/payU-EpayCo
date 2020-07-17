@@ -21,8 +21,8 @@ we must include in our proyect the script provided for **epayCo**
 
 ### SECOND STEP
 
-**key**: llave secreta del comercio.
-**test**: true (prueba), false (producción).
+- **key**: llave secreta del comercio.
+- **test**: true (prueba), false (producción).
 
 ```js
 var handler = ePayco.checkout.configure({
