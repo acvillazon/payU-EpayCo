@@ -11,7 +11,7 @@ There are two ways to do this integration.
 
 We are going to use the second method, this method provide us a class with all the necessary functions to execute any operation described in its documentacion.
 
-##### FIRST STEP
+### FIRST STEP
 
 we must include in our proyect the script provided for **epayCo**
 
@@ -21,7 +21,7 @@ we must include in our proyect the script provided for **epayCo**
 
 `
 
-##### SECOND STEP
+### SECOND STEP
 
 **key**: llave secreta del comercio.
 **test**: true (prueba), false (producción).
@@ -35,7 +35,7 @@ var handler = ePayco.checkout.configure({
 
 It is necessary to make the connection and communication with the API epayCo.
 
-##### THIRD STEP
+### THIRD STEP
 
 In this step we need all the information neccesary for proccesed the payment.
 The information that we require in this step are the next.
@@ -66,7 +66,7 @@ var data = {
 }
 ```
 
-##### FOURTH STEP
+### FOURTH STEP
 
 Finally, we must provided to the handler, the object created with all the information of the payment.
 
